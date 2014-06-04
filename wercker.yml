@@ -15,7 +15,7 @@ build:
 
     # A step that executes `bundle install` command
     - bundle-install
-    - wercker/hipchat-notify@1.0.3
+#    - wercker/hipchat-notify@1.0.3
 
     # A step that prepares the database.yml using the database in services
     # - rails-database-yml
