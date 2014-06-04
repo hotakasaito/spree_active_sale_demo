@@ -34,10 +34,10 @@ build:
     #        name: rspec
     #        code: bundle exec rspec
 
+  # https://teengenerate.hipchat.com/account/api
+  # https://teengenerate.hipchat.com/rooms/show/609885/psychobilly
   after-steps:
     - hipchat-notify:
-        # https://teengenerate.hipchat.com/account/api
         token: FQPlBSHpJ7kTF31xqoK9RU8j9mDBbn4NFzDswISr
-        # https://teengenerate.hipchat.com/rooms/show/609885/psychobilly
         room-id: 609885
         from-name: wercker.com
