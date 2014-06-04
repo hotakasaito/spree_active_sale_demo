@@ -1,4 +1,6 @@
-box: wercker/rvm
+box: wercker/ubuntu12.04-ruby2.0.0@1.0.0
+services:
+  - wercker/mysql
 # Build definition
 # See the Rails section on the wercker devcenter:
 # http://devcenter.wercker.com/articles/languages/ruby/settingup-rails4.html
@@ -10,10 +12,14 @@ box: wercker/rvm
 build:
   steps:
     # Uncomment this to force RVM to use a specific Ruby version
-    # - rvm-use:
-    #       version: 2.1.0
+    - rvm-use:
+        version: 2.0.0
 
     # A step that executes `bundle install` command
+
+    - install-packages:
+        packages: imagemagick
+
     - bundle-install
 #    - wercker/hipchat-notify@1.0.3
 
@@ -31,11 +37,18 @@ build:
 
     # Add more steps here:
     - script:
-        name: rspec
-        code: bundle exec rspec
+        name: Run RSpec
+        code: bundle exec rspec spec
 
   # https://teengenerate.hipchat.com/account/api
   # https://teengenerate.hipchat.com/rooms/show/609885/psychobilly
+  after-steps:
+    - hipchat-notify:
+        token: $HIPCHAT_TOKEN
+        room-id: 609885
+        from-name: wercker
+
+deploy:
   after-steps:
     - hipchat-notify:
         token: $HIPCHAT_TOKEN
