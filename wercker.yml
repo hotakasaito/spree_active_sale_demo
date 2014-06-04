@@ -40,4 +40,4 @@ build:
     - hipchat-notify:
         token: FQPlBSHpJ7kTF31xqoK9RU8j9mDBbn4NFzDswISr
         room-id: 609885
-        from-name: wercker.com
+        from-name: wercker
