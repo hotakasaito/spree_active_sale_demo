@@ -18,7 +18,7 @@ build:
     - script:
         name: Install Beanstalk CLI
         code: |
-          -
+          test -d /usr/local/aws/elasticbeanstalk && exit 0
           wget --quiet https://s3.amazonaws.com/elasticbeanstalk/cli/AWS-ElasticBeanstalk-CLI-2.6.2.zip
           unzip -qq AWS-ElasticBeanstalk-CLI-2.6.2.zip
           sudo mkdir -p /usr/local/aws/elasticbeanstalk
