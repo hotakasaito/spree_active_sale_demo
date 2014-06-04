@@ -38,6 +38,6 @@ build:
   # https://teengenerate.hipchat.com/rooms/show/609885/psychobilly
   after-steps:
     - hipchat-notify:
-        token: FQPlBSHpJ7kTF31xqoK9RU8j9mDBbn4NFzDswISr
+        token: $HIPCHAT_TOKEN
         room-id: 609885
         from-name: wercker
