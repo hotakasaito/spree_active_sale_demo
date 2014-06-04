@@ -18,7 +18,8 @@ build:
     - script:
         name: Install Beanstalk CLI
         code: |
-          test -d /usr/local/aws/elasticbeanstalk && exit 0
+          if [ ! -d /usr/local/aws/elasticbeanstalk ]
+          then
           wget --quiet https://s3.amazonaws.com/elasticbeanstalk/cli/AWS-ElasticBeanstalk-CLI-2.6.2.zip
           unzip -qq AWS-ElasticBeanstalk-CLI-2.6.2.zip
           sudo mkdir -p /usr/local/aws/elasticbeanstalk
@@ -27,6 +28,7 @@ build:
           export AWS_CREDENTIAL_FILE="/home/ubuntu/.elasticbeanstalk/aws_credential_file"
           mkdir -p "/home/ubuntu/.elasticbeanstalk/"
           mkdir -p "$WERCKER_SOURCE_DIR/.elasticbeanstalk/"
+          fi
 
     # Uncomment this to force RVM to use a specific Ruby version
     - rvm-use:
