@@ -12,6 +12,22 @@ services:
 # http://devcenter.wercker.com/articles/services/
 build:
   steps:
+    - install-packages:
+        packages: unzip
+
+    - script:
+        name: Install Beanstalk CLI
+        code: |
+          -
+          wget --quiet https://s3.amazonaws.com/elasticbeanstalk/cli/AWS-ElasticBeanstalk-CLI-2.6.2.zip
+          unzip -qq AWS-ElasticBeanstalk-CLI-2.6.2.zip
+          sudo mkdir -p /usr/local/aws/elasticbeanstalk
+          sudo mv AWS-ElasticBeanstalk-CLI-2.6.2/* /usr/local/aws/elasticbeanstalk/
+          export PATH="/usr/local/aws/elasticbeanstalk/eb/linux/python2.7:$PATH"
+          export AWS_CREDENTIAL_FILE="/home/ubuntu/.elasticbeanstalk/aws_credential_file"
+          mkdir -p "/home/ubuntu/.elasticbeanstalk/"
+          mkdir -p "$WERCKER_SOURCE_DIR/.elasticbeanstalk/"
+
     # Uncomment this to force RVM to use a specific Ruby version
     - rvm-use:
         version: 2.0.0

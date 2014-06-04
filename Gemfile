@@ -6,6 +6,8 @@ gem 'rails', '3.2.16'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'therubyracer', :platforms => :ruby
+
 group :development, :test do
   gem 'sqlite3'
   #gem 'mysql2'
