@@ -15,6 +15,7 @@ build:
 
     # A step that executes `bundle install` command
     - bundle-install
+    - wercker/hipchat-notify@1.0.3
 
     # A step that prepares the database.yml using the database in services
     # - rails-database-yml
@@ -32,10 +33,7 @@ build:
     # - script:
     #        name: rspec
     #        code: bundle exec rspec
-steps:
-  - wercker/hipchat-notify@1.0.3
 
-build:
   after-steps:
     - hipchat-notify:
         # https://teengenerate.hipchat.com/account/api
