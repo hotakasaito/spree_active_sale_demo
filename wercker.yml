@@ -60,6 +60,7 @@ deploy:
           if [ ! -d /usr/local/aws/elasticbeanstalk ] ; then wget --quiet https://s3.amazonaws.com/elasticbeanstalk/cli/AWS-ElasticBeanstalk-CLI-2.6.2.zip ; unzip -qq AWS-ElasticBeanstalk-CLI-2.6.2.zip ; sudo mkdir -p /usr/local/aws ; sudo mv AWS-ElasticBeanstalk-CLI-2.6.2 /usr/local/aws/elasticbeanstalk ; mkdir -p "$HOME/.elasticbeanstalk/" ; mkdir -p "$WERCKER_SOURCE_DIR/.elasticbeanstalk/" ; fi
           export PATH="/usr/local/aws/elasticbeanstalk/eb/linux/python2.7:$PATH"
           export AWS_CREDENTIAL_FILE="/home/ubuntu/.elasticbeanstalk/aws_credential_file"
+    - heroku-deploy
 
 #  after-steps:
 #    - hipchat-notify:
