@@ -49,6 +49,7 @@ build:
         from-name: wercker
 
 deploy:
+  steps:
   after-steps:
     - hipchat-notify:
         token: $HIPCHAT_TOKEN
